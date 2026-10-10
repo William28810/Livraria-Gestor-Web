@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <title>Livraria Gestor</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/estilo.css">
+    </head>
+    <body>
+        <div class="sistema">
+            
+            <aside class="menu-lateral">
+                
+                <h1>Livraria Gestor</h1>
+                
+                <nav>
+                    <button id="btnLivros">Livros</button>
+                    <button id="btnClientes">Clientes</button>
+                    <button id="btnVendas">Vendas</button>
+                    <button id="btnRelatorios">Relatórios</button>
+                    <button id="btnHistorico">Histórico</button>
+                    <button id="btnUsuarios">Usuários</button>
+                </nav>
+                
+            </aside>
+            
+            <main class="conteudo" id="conteudo">
+                <h2>Livros</h2>
+                
+                <div class="campo-busca">
+                    <label for="buscarLivro">Buscar:</label>
+                    <input type="text" id="buscarLivro">
+                    <button id="btnBuscarLivro">Buscar</button>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Autor</th>
+                            <th>Gênero</th>
+                            <th>Publicação</th>
+                            <th>Quantidade</th>
+                            <th>Preço</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tabelaLivros"></tbody>
+                </table>
+
+                <div class="botoes-tabela">
+                    <button onclick="abrirModal('modalLivro')">Novo</button>
+                    <button onclick="editarLivro()">Editar</button>
+                    <button onclick="excluirLivro()">Excluir</button>
+                </div>
+                
+            </main>
+        
+        </div>
+        
+        <!-- Tela de Cadastro de Livro -->
+        <div id="modalLivro" class="modal">
+            <div class="modal-conteudo">
+
+                <h2>Cadastro de Livro</h2>
+
+                <label for="tituloLivro">Título:</label>
+                <input type="text" id="tituloLivro">
+
+                <label for="autorLivro">Autor:</label>
+                <input type="text" id="autorLivro">
+
+                <label for="generoLivro">Gênero:</label>
+                <input type="text" id="generoLivro">
+
+                <label for="publicacaoLivro">Publicação:</label>
+                <input type="date" id="publicacaoLivro">
+
+                <label for="quantidadeLivro">Quantidade:</label>
+                <input type="number" id="quantidadeLivro">
+
+                <label for="precoLivro">Preço:</label>
+                <input type="number" id="precoLivro" step="0.01">
+
+                <label for="observacaoLivro">Observação:</label>
+                <textarea id="observacaoLivro"></textarea>
+
+                <div class="botoes-modal">
+                    <button onclick="salvarLivro()">Salvar</button>
+                    <button onclick="limparFormulario('modalLivro')">Limpar</button>
+                    <button class="btn-cancelar" onclick="fecharModal('modalLivro')">
+                        Cancelar
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Tela de Cadastro de Cliente -->
+        <div id="modalCliente" class="modal">
+            <div class="modal-conteudo">
+
+                <h2>Cadastro de Cliente</h2>
+
+                <label for="nomeCliente">Nome:</label>
+                <input type="text" id="nomeCliente">
+
+                <label for="cpfCliente">CPF:</label>
+                <input type="text" id="cpfCliente">
+
+                <label for="telefoneCliente">Telefone:</label>
+                <input type="text" id="telefoneCliente">
+
+                <label for="emailCliente">E-mail:</label>
+                <input type="email" id="emailCliente">
+
+                <label for="enderecoCliente">Endereço:</label>
+                <input type="text" id="enderecoCliente">
+
+                <div class="botoes-modal">
+                    <button onclick="salvarCliente()">Salvar</button>
+                    <button onclick="limparFormulario('modalCliente')">Limpar</button>
+                    <button class="btn-cancelar" onclick="fecharModal('modalCliente')">
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+                
+        <!-- Tela de Cadastro de Usuário -->
+        <div id="modalUsuario" class="modal">
+            <div class="modal-conteudo">
+
+                <h2>Cadastro de Usuário</h2>
+
+                <label for="nomeUsuario">Nome:</label>
+                <input type="text" id="nomeUsuario">
+
+                <label for="cargoUsuario">Cargo:</label>
+                <input type="text" id="cargoUsuario">
+
+                <label for="nivelPermissaoUsuario">Nível de Permissão:</label>
+                <input type="text" id="nivelPermissaoUsuario">
+
+                <label for="loginUsuario">Login:</label>
+                <input type="text" id="loginUsuario">
+
+                <label for="senhaUsuario">Senha:</label>
+                <input type="password" id="senhaUsuario">
+
+                <div class="botoes-modal">
+                    <button onclick="salvarUsuario()">Salvar</button>
+                    <button onclick="limparFormulario('modalUsuario')">Limpar</button>
+                    <button class="btn-cancelar" onclick="fecharModal('modalUsuario')">
+                        Cancelar
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Tela de Registro de Venda -->
+        <div id="modalVenda" class="modal">
+            <div class="modal-conteudo">
+
+                <h2>Registro de Venda</h2>
+
+                <label for="dataHoraVenda">Data/Hora:</label>
+                <input type="datetime-local" id="dataHoraVenda">
+
+                <label for="clienteVenda">Cliente:</label>
+                <input type="text" id="clienteVenda">
+
+                <label for="funcionarioVenda">Funcionário:</label>
+                <input type="text" id="funcionarioVenda">
+
+                <label for="valorTotalVenda">Valor Total:</label>
+                <input type="number" id="valorTotalVenda" step="0.01">
+
+                <div class="botoes-modal">
+                    <button onclick="salvarVenda()">Salvar</button>
+                    <button onclick="limparFormulario('modalVenda')">Limpar</button>
+                    <button class="btn-cancelar" onclick="fecharModal('modalVenda')">
+                        Cancelar
+                    </button>
+                </div>
+
+            </div>
+        </div>
+                
+        <script src="js/home.js"></script>
+    </body>
+</html>
